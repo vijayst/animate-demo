@@ -1,0 +1,12 @@
+{
+  "name": "animate-demo",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:vijayst/animate-demo.git",
+  "author": "vijayst <vijayst@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "react": "^16.7.0-alpha.2",
+    "react-dom": "^16.7.0-alpha.2"
+  }
+}

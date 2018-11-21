@@ -1,45 +1,27 @@
-import React, { useState, useEffect } from 'react';
-import getData from './getData';
+import React, { useReducer, useEffect } from 'react';
+import barchartReducer from './barchartReducer';
+import Barchart from './Barchart';
 
 export default function App() {
-    const [data, setData] = useState([]);
-    const [key, setKey] = useState(Date.now());
+    const [{ key, data }, dispatch] = useReducer(barchartReducer, {});
     
     useEffect(() => {
-        setData(getData());
+        dispatch({ type: 'INIT' });
     }, []);
 
     function handleUpdate() {
-        setData(getData());
+        dispatch({ type: 'UPDATE' });
     }
 
-    function handleReset() {
-        setData(getData());
-        setKey(Date.now());
+    function handleSort() {
+        dispatch({ type: 'SORT' });
     }
 
     return (
         <div>
             <button onClick={handleUpdate}>Update</button>
-            <button onClick={handleReset}>Reset</button>
-            <table key={key}>
-                <thead>
-                    <tr>
-                        <th>Label</th>
-                        <th>Value</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {
-                        data.map(d => (
-                            <tr key={d.label}>
-                                <td>{d.label}</td>
-                                <td>{d.value}</td>
-                            </tr>
-                        ))
-                    }
-                </tbody>
-            </table>
+            <button onClick={handleSort}>Sort</button>
+            <Barchart chartKey={key} data={data} />
         </div>
     );
 }

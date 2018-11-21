@@ -1,26 +1,5 @@
-let i = 0;
-
-export default function getData() {
-    const data = [
-        {
-            label: 'A'
-        },
-        {
-            label: 'B'
-        },
-        {
-            label: 'C'
-        },
-        {
-            label: 'D'
-        },
-        {
-            label: 'E'
-        },
-        {
-            label: 'F'
-        }
-    ];
+export default function getData(data) {
+    data = data.slice();
     data.forEach(d => {
         d.value = Math.round(Math.random() * 100);
     });
